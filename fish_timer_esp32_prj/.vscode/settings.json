@@ -57,7 +57,8 @@
         "lv_examples.h": "c",
         "lv_demo_benchmark.h": "c",
         "beep_app.h": "c",
-        "benchmark.h": "c"
+        "benchmark.h": "c",
+        "myiic.h": "c"
     },
     "idf.flashType": "UART"
 }

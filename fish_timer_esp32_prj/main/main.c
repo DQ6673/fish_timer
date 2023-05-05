@@ -8,7 +8,6 @@
 #include "driver/gpio.h"
 #include "esp_console.h"
 #include "esp_vfs_fat.h"
-// #include "cmd_system.h"
 #include "myiic.h"
 #include "sht20.h"
 #include "timer.h"
