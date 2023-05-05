@@ -112,7 +112,6 @@ static void task_lcd_handler(void *Param)
 	// lv_demo_benchmark();
 	my_lv_app();
 
-	printf("sb\r\n");
 	for (;;)
 	{
 		// display_temp(temp_now - 2);
