@@ -14,12 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//No help, variable specified on the command line.
-CCACHE_ENABLE:UNINITIALIZED=1
-
-//Path to a program.
-CCACHE_FOUND:FILEPATH=C:/Users/dpm/.espressif/tools/ccache/4.6.2/ccache-4.6.2-windows-x86_64/ccache.exe
-
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Users/dpm/.espressif/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-addr2line.exe
 

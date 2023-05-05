@@ -18,7 +18,7 @@
 #include "ds18b20.h"
 #include "beep_app.h"
 #include "lvgl.h"
-#include "lv_examples/src/lv_demo_benchmark/lv_demo_benchmark.h"
+// #include "lv_examples/src/lv_demo_benchmark/lv_demo_benchmark.h"
 
 float temp_now = 0.00;
 float water_now = 0.00;
@@ -76,7 +76,7 @@ void disp_driver_flush(lv_disp_drv_t *drv, const lv_area_t *area, lv_color_t *co
 
 static void my_lv_app(void)
 {
-	lv_demo_benchmark();
+	// lv_demo_benchmark();
 }
 
 static void task_lcd_handler(void *Param)
