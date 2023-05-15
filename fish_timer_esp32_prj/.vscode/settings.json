@@ -11,7 +11,7 @@
     "idf.openOcdConfigs": [
         "board/esp32c3-ftdi.cfg"
     ],
-    "idf.portWin": "COM5",
+    "idf.portWin": "COM4",
     "idf.pythonBinPathWin": "C:\\Users\\dpm\\.espressif\\python_env\\idf5.0_py3.8_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "C:\\Users\\dpm\\.espressif",
     "files.associations": {
@@ -58,7 +58,11 @@
         "lv_demo_benchmark.h": "c",
         "beep_app.h": "c",
         "benchmark.h": "c",
-        "myiic.h": "c"
+        "myiic.h": "c",
+        "buzzer_app.h": "c",
+        "sht20_app.h": "c",
+        "sht20_driver.h": "c",
+        "key_driver.h": "c"
     },
     "idf.flashType": "UART"
 }

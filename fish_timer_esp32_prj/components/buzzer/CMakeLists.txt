@@ -1,9 +1,8 @@
-set(srcs "ds18b20_driver.c" "ds18b20_app.c")
+set(srcs "buzzer_driver.c" "buzzer_app.c")
 
 set(includes ".")
 
 set(requires    "driver"
-                "user_timer"
                 )
 
 

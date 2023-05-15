@@ -1,4 +1,4 @@
-set(srcs "ds18b20_driver.c" "ds18b20_app.c")
+set(srcs "key_driver.c" "key_app.c")
 
 set(includes ".")
 

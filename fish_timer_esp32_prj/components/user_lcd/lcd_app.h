@@ -3,9 +3,6 @@
 
 #include "stdio.h"
 
-void display_temp(float tempnum);
-void display_water(float waternum);
-void display_time(void);
-void display_note(void);
+void lcd_app_start(void);
 
 #endif

@@ -1,4 +1,8 @@
-#include "lcd.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
+
+#include "lcd_driver.h"
 #include "lcd_app.h"
 
 // Temp
@@ -47,6 +51,7 @@
 #define RES_H_NOTE 36
 #define RES_V_NOTE 38
 
+// LCD font
 extern const uint8_t temp_num_map[];
 extern const uint8_t water_num_map[];
 extern const uint8_t time_num_map[];
@@ -54,8 +59,13 @@ extern const uint8_t week_num_map[];
 extern const uint8_t AM_PM_map[];
 extern const uint8_t note_map[];
 
+// LCD task
+TaskHandle_t task_lcd_handler_handle;
+#define task_lcd_handler_stackdepth 1024 * 3
+#define task_lcd_handler_priority 1
+
 // orange
-void display_temp(float tempnum)
+static void display_temp(float tempnum)
 {
     int num_set = (int)(tempnum * 100);
     int xstart = pos_Temp_int_x, ystart = pos_Temp_int_y;
@@ -87,7 +97,7 @@ void display_temp(float tempnum)
 }
 
 // blue
-void display_water(float waternum)
+static void display_water(float waternum)
 {
     int num_set = (int)(waternum * 100);
     int xstart = pos_Water_int_x, ystart = pos_Water_int_y;
@@ -119,7 +129,7 @@ void display_water(float waternum)
 }
 
 // grey
-void display_time(void)
+static void display_time(void)
 {
     int year = 2023, month = 12, day = 25;
     int week = 6;
@@ -223,7 +233,7 @@ void display_time(void)
                   ystart,
                   xstart + RES_H_AM_PM,
                   ystart + RES_V_AM_PM,
-                  AM_PM_map + RES_H_AM_PM * RES_V_AM_PM * (AM_PM) * 2);
+                  AM_PM_map + RES_H_AM_PM * RES_V_AM_PM * (AM_PM)*2);
 
     // week
     xstart = pos_week_x;
@@ -236,9 +246,9 @@ void display_time(void)
 }
 
 // note
-void display_note(void)
+static void display_note(void)
 {
-     int xstart = pos_note_x, ystart = pos_note_y;
+    int xstart = pos_note_x, ystart = pos_note_y;
 
     lcd_draw_icon(xstart,
                   ystart,
@@ -253,3 +263,28 @@ void display_note(void)
                   note_map + RES_H_NOTE * RES_V_NOTE * (8) * 2);
 }
 
+static void task_lcd_handler(void *Param)
+{
+    bgd_pic_fullfill(); // background picture
+
+    for (;;)
+    {
+        display_temp(temp_now);
+        display_water(water_now);
+        display_time();
+        display_note();
+        vTaskDelay(10 / portTICK_PERIOD_MS);
+    }
+}
+
+void lcd_app_start(void)
+{
+    lcd_init();
+    // lcd task
+    xTaskCreate(task_lcd_handler,
+                "task_lcd_handler",
+                task_lcd_handler_stackdepth,
+                NULL,
+                task_lcd_handler_priority,
+                &task_lcd_handler_handle);
+}

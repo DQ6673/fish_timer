@@ -1,10 +1,9 @@
-set(srcs "lcd.c" "lcd_font.c" "lcd_app.c")
+set(srcs "lcd_driver.c" "lcd_font.c" "lcd_app.c")
 
 set(includes ".")
 
 set(requires    "esp_lcd"
                 "driver"
-                "main"
                 )
 
 

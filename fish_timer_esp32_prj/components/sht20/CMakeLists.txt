@@ -1,4 +1,4 @@
-set(srcs "sht20.c")
+set(srcs "sht20_driver.c" "sht20_app.c")
 
 set(includes ".")
 

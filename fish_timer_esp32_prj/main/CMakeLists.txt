@@ -9,11 +9,8 @@ set(requires    "sht20"
                 "ds18b20"
                 "driver"
                 "esp_timer"
-                "beep"
-                "console"
-                "fatfs"
-                "lvgl"
-                "lv_examples"
+                "buzzer"
+                "key"
                 )
 
 
